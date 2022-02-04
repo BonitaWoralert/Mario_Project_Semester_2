@@ -15,13 +15,22 @@ SDL_Window* g_window = nullptr;
 //Function prototypes
 bool InitSDL();
 void CloseSDL();
+bool Update();
 
 int main(int argc, char* args[])
 {
+
 	//Check sdl setup correctly
 	if (InitSDL())
 	{
-		SDL_Delay(5000);
+		//flag to see if user wants to quit
+		bool quit = false;
+		
+		//Game Loop
+		while (!quit)
+		{
+			quit = Update();
+		}
 	}
 
 	CloseSDL();
@@ -40,7 +49,7 @@ bool InitSDL()
 	else
 	{
 		//setup passed so create window
-		g_window = SDL_CreateWindow("Games Engine Creation",
+		g_window = SDL_CreateWindow("Click the X or press Enter to quit!",
 			SDL_WINDOWPOS_UNDEFINED,
 			SDL_WINDOWPOS_UNDEFINED,
 			SCREEN_WIDTH,
@@ -64,4 +73,31 @@ void CloseSDL()
 	//quit SDL subsystems
 	IMG_Quit();
 	SDL_Quit();
+}
+bool Update()
+{
+	//Event handler
+	SDL_Event e;
+
+	//get events
+	SDL_PollEvent(&e);
+
+	//handle the events
+	switch (e.type)
+	{
+		//click 'X' to quit
+	case SDL_QUIT:
+		return true;
+		break;
+	}
+
+	switch (e.key.keysym.sym)
+	{
+		//press button to quit
+	case SDLK_RETURN:
+		return true;
+		break;
+	}
+
+	return false;
 }
