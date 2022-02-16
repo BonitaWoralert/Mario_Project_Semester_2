@@ -22,11 +22,11 @@ bool Update();
 void Render();
 
 int main(int argc, char* args[])
-{
-
+{	
 	//Check sdl setup correctly
 	if (InitSDL())
 	{
+		std::cout << "sdl setup" << std::endl;
 		//flag to see if user wants to quit
 		bool quit = false;
 		
@@ -37,8 +37,9 @@ int main(int argc, char* args[])
 			quit = Update();
 		}
 	}
-
+	std::cout << "closing..." << std::endl;
 	CloseSDL();
+	
 
 	return 0;
 }
@@ -61,6 +62,7 @@ bool InitSDL()
 			SCREEN_HEIGHT,
 			SDL_WINDOW_SHOWN);
 
+
 		//did window get created?
 		if (g_window == nullptr)
 		{
@@ -69,6 +71,10 @@ bool InitSDL()
 			return false;
 		}
 
+		
+		std::cout << "window created" << std::endl;
+		
+		
 		//create renderer
 		g_renderer = SDL_CreateRenderer(g_window, -1, SDL_RENDERER_ACCELERATED);
 
@@ -87,13 +93,21 @@ bool InitSDL()
 		{
 			std::cout << "Renderer could not initialise. Error: " << SDL_GetError();
 			return false;
+
 		}
+
+
+		std::cout << "renderer created" << std::endl;
 
 		//Load background texture
 		g_texture = new Texture2D(g_renderer);
+		//g_texture->LoadFromFile("Images/test.bmp");
+
+		std::cout << "texture attempted" << std::endl;
+
 		if (!g_texture->LoadFromFile("Images/test.bmp"));
 		{
-			return false;
+			return true;
 		}
 	}
 }
@@ -123,8 +137,8 @@ bool Update()
 
 	//get events
 	SDL_PollEvent(&e);
-
 	//handle the events
+	
 	switch (e.type)
 	{
 		//click 'X' to quit
@@ -140,6 +154,7 @@ bool Update()
 		return true;
 		break;
 	}
+	
 
 	return false;
 }
