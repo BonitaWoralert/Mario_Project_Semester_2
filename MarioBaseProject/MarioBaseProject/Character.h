@@ -18,6 +18,9 @@ protected:
 	virtual void MoveRight(float deltaTime);
 	bool m_moving_left;
 	virtual void MoveLeft(float deltaTime);
+
+	//gravity
+	virtual void AddGravity(float deltaTime);
 public:
 	Character(SDL_Renderer* renderer, std::string imagePath, Vector2D start_position);
 	~Character();

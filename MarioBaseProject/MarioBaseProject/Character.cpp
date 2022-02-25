@@ -44,6 +44,7 @@ void Character::Update(float deltaTime, SDL_Event e)
 		MoveRight(deltaTime);
 	}
 
+	AddGravity(deltaTime);
 
 	switch (e.type)
 	{
@@ -74,6 +75,7 @@ void Character::Update(float deltaTime, SDL_Event e)
 	default:;
 	}
 }
+
 void Character::SetPosition(Vector2D new_position)
 {
 	std::cout << "set pos";
@@ -94,4 +96,16 @@ void Character::MoveLeft(float deltaTime)
 {
 	m_position.x -= deltaTime * MOVEMENT_SPEED;
 	m_facing_direction = FACING_LEFT;
+}
+
+void Character::AddGravity(float deltaTime)
+{	
+	if (m_position.y + m_texture->GetHeight() <= SCREEN_HEIGHT)
+	{
+		m_position.y += GRAVITY_STRENGTH * deltaTime;
+	}
+	else
+	{
+		m_position.y = SCREEN_HEIGHT - m_texture->GetHeight();
+	}
 }
