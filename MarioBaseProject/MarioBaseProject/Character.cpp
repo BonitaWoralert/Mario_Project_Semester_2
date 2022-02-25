@@ -1,9 +1,11 @@
 #include "Character.h"
 #include "Texture2D.h"
-
+#include "constants.h"
 
 Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D start_position)
 {
+	m_moving_left = false;
+	m_moving_right = false;
 	m_facing_direction = FACING_RIGHT;
 	m_renderer = renderer;
 	m_position = start_position;
@@ -33,15 +35,41 @@ void Character::Render()
 
 void Character::Update(float deltaTime, SDL_Event e)
 {
-	switch (e.key.keysym.sym)
+	if (m_moving_left)
 	{
-	case SDLK_LEFT:
-		m_position.x -= 1;
-		m_facing_direction = FACING_LEFT;
+		MoveLeft(deltaTime);
+	}
+	else if (m_moving_right)
+	{
+		MoveRight(deltaTime);
+	}
+
+
+	switch (e.type)
+	{
+	case SDL_KEYDOWN:
+		switch (e.key.keysym.sym)
+		{
+		case SDLK_LEFT:
+			m_moving_left = true;
+			break;
+		case SDLK_RIGHT:
+			m_moving_right = true;
+			break;
+		default:;
+		}
 		break;
-	case SDLK_RIGHT:
-		m_position.x += 1;
-		m_facing_direction = FACING_RIGHT;
+	case SDL_KEYUP:
+		switch (e.key.keysym.sym)
+		{
+		case SDLK_LEFT:
+			m_moving_left = false;
+			break;
+		case SDLK_RIGHT:
+			m_moving_right = false;
+			break;
+		default:;
+		}
 		break;
 	default:;
 	}
@@ -58,10 +86,12 @@ Vector2D Character::GetPosition()
 
 void Character::MoveRight(float deltaTime)
 {
-
+	m_position.x += deltaTime * MOVEMENT_SPEED;
+	m_facing_direction = FACING_RIGHT;
 }
 
 void Character::MoveLeft(float deltaTime)
 {
-
+	m_position.x -= deltaTime * MOVEMENT_SPEED;
+	m_facing_direction = FACING_LEFT;
 }
