@@ -2,13 +2,16 @@
 #ifndef _GAMESCREENLEVEL1_H
 #include "GameScreen.h"
 #include "Commons.h"
+#include "Character.h"
 
+class Character;
 class Texture2D;
 
 class GameScreenLevel1 : GameScreen
 {
 private:
 	Texture2D* m_background_texture;
+	Character* my_character;
 	bool SetUpLevel();
 public:
 	GameScreenLevel1(SDL_Renderer* renderer);
@@ -17,6 +20,5 @@ public:
 	void Render() override;
 	void Update(float deltaTime, SDL_Event e) override;
 };
-
 
 #endif // !_GAMESCREENLEVEL1_H
