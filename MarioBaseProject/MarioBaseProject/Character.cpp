@@ -35,6 +35,21 @@ void Character::Render()
 
 void Character::Update(float deltaTime, SDL_Event e)
 {
+	//jumping
+	if (m_jumping)
+	{
+		//adjust position
+		m_position.y -= m_jump_force * deltaTime;
+		//reduce jump force
+		m_jump_force -= JUMP_FORCE_DECREMENT * deltaTime;
+		//is jump force 0?
+		if (m_jump_force <= 0.0f)
+		{
+			m_jumping = false;
+		}
+	}
+	
+	//moving left/right
 	if (m_moving_left)
 	{
 		MoveLeft(deltaTime);
@@ -44,8 +59,10 @@ void Character::Update(float deltaTime, SDL_Event e)
 		MoveRight(deltaTime);
 	}
 
+	//add gravity
 	AddGravity(deltaTime);
 
+	//check inputs
 	switch (e.type)
 	{
 	case SDL_KEYDOWN:
@@ -56,6 +73,14 @@ void Character::Update(float deltaTime, SDL_Event e)
 			break;
 		case SDLK_RIGHT:
 			m_moving_right = true;
+			break;
+		case SDLK_SPACE:
+			if (m_can_jump)
+			{
+				Jump();
+				m_jumping = true;
+				std::cout << "jumping";
+			}
 			break;
 		default:;
 		}
@@ -106,6 +131,17 @@ void Character::AddGravity(float deltaTime)
 	}
 	else
 	{
+		m_can_jump = true;
 		m_position.y = SCREEN_HEIGHT - m_texture->GetHeight();
+	}
+}
+
+void Character::Jump()
+{
+	if (!m_jumping)
+	{
+		m_jump_force = INITIAL_JUMP_FORCE;
+		m_jumping = true;
+		m_can_jump = false;
 	}
 }

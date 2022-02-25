@@ -21,6 +21,12 @@ protected:
 
 	//gravity
 	virtual void AddGravity(float deltaTime);
+
+	//jumping
+	bool m_jumping;
+	bool m_can_jump;
+	float m_jump_force;
+	virtual void Jump();
 public:
 	Character(SDL_Renderer* renderer, std::string imagePath, Vector2D start_position);
 	~Character();
