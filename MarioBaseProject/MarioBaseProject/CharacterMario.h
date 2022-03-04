@@ -1,5 +1,5 @@
-#pragma once
 #ifndef _CHARACTER_MARIO_H
+#define _CHARACTER_MARIO_H
 #include "Character.h"
 
 class CharacterMario : public Character
