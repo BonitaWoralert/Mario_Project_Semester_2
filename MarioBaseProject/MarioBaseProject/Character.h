@@ -1,8 +1,9 @@
-#pragma once
 #ifndef _CHARACTER_H
+#define _CHARACTER_H
 #include <SDL.h>
 #include <iostream>
 #include "Commons.h"
+#include "Texture2D.h"
 
 class Texture2D;
 
@@ -38,7 +39,9 @@ public:
 	void SetPosition(Vector2D new_position);
 	Vector2D GetPosition();
 
+	//collisions
 	float GetCollisionRadius();
+	Rect2D GetCollisionBox() { return Rect2D(m_position.x, m_position.y, m_texture->GetWidth(), m_texture->GetHeight()); }
 private:
 	FACING m_facing_direction;
 };
