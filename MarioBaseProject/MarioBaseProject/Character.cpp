@@ -4,6 +4,8 @@
 
 Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D start_position)
 {
+	m_collision_radius = 15.0f;
+
 	m_moving_left = false;
 	m_moving_right = false;
 	m_facing_direction = FACING_RIGHT;
@@ -19,6 +21,11 @@ Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D sta
 Character::~Character()
 {
 	m_renderer = nullptr;
+}
+
+float Character::GetCollisionRadius()
+{
+	return m_collision_radius;
 }
 
 void Character::Render()

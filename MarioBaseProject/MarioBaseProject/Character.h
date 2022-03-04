@@ -9,6 +9,8 @@ class Texture2D;
 class Character
 {
 protected:
+	float m_collision_radius;
+
 	SDL_Renderer* m_renderer;
 	Vector2D m_position;
 	Texture2D* m_texture;
@@ -35,6 +37,8 @@ public:
 	virtual void Update(float deltaTime, SDL_Event e);
 	void SetPosition(Vector2D new_position);
 	Vector2D GetPosition();
+
+	float GetCollisionRadius();
 private:
 	FACING m_facing_direction;
 };
