@@ -74,6 +74,7 @@ void Character::Update(float deltaTime, SDL_Event e)
 
 	if (m_current_level_map->GetTileAt(foot_position, centralX_position) == 0)
 	{
+		std::cout << foot_position << "\n" << centralX_position << std::endl;
 		AddGravity(deltaTime);
 	}
 	else

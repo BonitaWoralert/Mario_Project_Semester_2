@@ -1,4 +1,5 @@
 #include "LevelMap.h"
+#include <iostream>
 /*
 when making a map, remember:
 0 = empty space, 1 = occupied space
@@ -37,7 +38,10 @@ int LevelMap::GetTileAt(unsigned int h, unsigned int w)
 {
 	if(h< MAP_HEIGHT && w < MAP_WIDTH)
 	{
-		return m_map[h][w];
+		std::cout << "bruh";
+		//return 1;
+		//std::cout << m_map[h][w] << std::endl;
+		//return m_map[h][w];
 	}
 	return 0;
 } 
