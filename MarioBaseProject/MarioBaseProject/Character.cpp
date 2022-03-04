@@ -62,43 +62,43 @@ void Character::Update(float deltaTime, SDL_Event e)
 	//add gravity
 	AddGravity(deltaTime);
 
-	//check inputs
-	switch (e.type)
-	{
-	case SDL_KEYDOWN:
-		switch (e.key.keysym.sym)
-		{
-		case SDLK_LEFT:
-			m_moving_left = true;
-			break;
-		case SDLK_RIGHT:
-			m_moving_right = true;
-			break;
-		case SDLK_SPACE:
-			if (m_can_jump)
-			{
-				Jump();
-				m_jumping = true;
-				std::cout << "jumping";
-			}
-			break;
-		default:;
-		}
-		break;
-	case SDL_KEYUP:
-		switch (e.key.keysym.sym)
-		{
-		case SDLK_LEFT:
-			m_moving_left = false;
-			break;
-		case SDLK_RIGHT:
-			m_moving_right = false;
-			break;
-		default:;
-		}
-		break;
-	default:;
-	}
+	////check inputs
+	//switch (e.type)
+	//{
+	//case SDL_KEYDOWN:
+	//	switch (e.key.keysym.sym)
+	//	{
+	//	case SDLK_LEFT:
+	//		m_moving_left = true;
+	//		break;
+	//	case SDLK_RIGHT:
+	//		m_moving_right = true;
+	//		break;
+	//	case SDLK_SPACE:
+	//		if (m_can_jump)
+	//		{
+	//			Jump();
+	//			m_jumping = true;
+	//			std::cout << "jumping";
+	//		}
+	//		break;
+	//	default:;
+	//	}
+	//	break;
+	//case SDL_KEYUP:
+	//	switch (e.key.keysym.sym)
+	//	{
+	//	case SDLK_LEFT:
+	//		m_moving_left = false;
+	//		break;
+	//	case SDLK_RIGHT:
+	//		m_moving_right = false;
+	//		break;
+	//	default:;
+	//	}
+	//	break;
+	//default:;
+	//}
 }
 
 void Character::SetPosition(Vector2D new_position)

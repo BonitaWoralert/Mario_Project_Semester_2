@@ -3,15 +3,15 @@
 #include "GameScreen.h"
 #include "Commons.h"
 #include "Character.h"
+#include "CharacterMario.h"
 
-class Character;
 class Texture2D;
 
 class GameScreenLevel1 : GameScreen
 {
 private:
 	Texture2D* m_background_texture;
-	Character* my_character;
+	CharacterMario* mario;
 	bool SetUpLevel();
 public:
 	GameScreenLevel1(SDL_Renderer* renderer);
