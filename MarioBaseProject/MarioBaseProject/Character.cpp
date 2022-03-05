@@ -67,14 +67,13 @@ void Character::Update(float deltaTime, SDL_Event e)
 	}
 
 	//Collision position variables
-	int centralX_position = (int)(m_position.x + (m_texture->GetWidth() * 0.5)) / 
+	unsigned int centralX_position = (int)(m_position.x + (m_texture->GetWidth() * 0.5)) / 
 		TILE_WIDTH;
-	int foot_position = (int)(m_position.y + m_texture->GetHeight()) / TILE_HEIGHT;
+	unsigned int foot_position = (int)(m_position.y + m_texture->GetHeight()) / TILE_HEIGHT;
 	//add gravity
 
 	if (m_current_level_map->GetTileAt(foot_position, centralX_position) == 0)
 	{
-		std::cout << foot_position << "\n" << centralX_position << std::endl;
 		AddGravity(deltaTime);
 	}
 	else
