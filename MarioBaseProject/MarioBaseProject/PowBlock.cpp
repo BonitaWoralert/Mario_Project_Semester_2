@@ -19,7 +19,10 @@ PowBlock::PowBlock(SDL_Renderer* renderer, LevelMap* map)
 }
 PowBlock::~PowBlock()
 {
-
+	m_renderer = nullptr;
+	delete m_texture;
+	m_texture = nullptr;
+	m_level_map = nullptr;
 }
 void PowBlock::Render()
 {
@@ -27,5 +30,11 @@ void PowBlock::Render()
 }
 void PowBlock::TakeHit()
 {
-
+	m_num_hits_left -= 1;
+	if (m_num_hits_left <= 0)
+	{
+		m_num_hits_left = 0;
+		m_level_map->ChangeTileAt(8, 7, 0);
+		m_level_map->ChangeTileAt(8, 8, 0);
+	}
 }
