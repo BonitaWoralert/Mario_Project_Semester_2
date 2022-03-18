@@ -1,10 +1,11 @@
 #include "Character.h"
 #include "constants.h"
 
-Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D start_position)
+Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D start_position,
+	LevelMap* map)
 {
 	m_collision_radius = 15.0f;
-
+	m_current_level_map = map;
 	m_moving_left = false;
 	m_moving_right = false;
 	m_facing_direction = FACING_RIGHT;
@@ -65,46 +66,21 @@ void Character::Update(float deltaTime, SDL_Event e)
 		MoveRight(deltaTime);
 	}
 
-	//add gravity
-	AddGravity(deltaTime);
+	//Collision position variables
+	int centralX_position = (int)(m_position.x + (m_texture->GetWidth() * 0.5)) / 
+		TILE_WIDTH;
+	int foot_position = (int)(m_position.y + m_texture->GetHeight()) / TILE_HEIGHT;
 
-	////check inputs
-	//switch (e.type)
-	//{
-	//case SDL_KEYDOWN:
-	//	switch (e.key.keysym.sym)
-	//	{
-	//	case SDLK_LEFT:
-	//		m_moving_left = true;
-	//		break;
-	//	case SDLK_RIGHT:
-	//		m_moving_right = true;
-	//		break;
-	//	case SDLK_SPACE:
-	//		if (m_can_jump)
-	//		{
-	//			Jump();
-	//			m_jumping = true;
-	//			std::cout << "jumping";
-	//		}
-	//		break;
-	//	default:;
-	//	}
-	//	break;
-	//case SDL_KEYUP:
-	//	switch (e.key.keysym.sym)
-	//	{
-	//	case SDLK_LEFT:
-	//		m_moving_left = false;
-	//		break;
-	//	case SDLK_RIGHT:
-	//		m_moving_right = false;
-	//		break;
-	//	default:;
-	//	}
-	//	break;
-	//default:;
-	//}
+	//add gravity
+	if (m_current_level_map->GetTileAt(foot_position, centralX_position) == 0)
+	{
+		AddGravity(deltaTime);
+	}
+	else
+	{
+		//collided with ground
+		m_can_jump = true;
+	}
 }
 
 void Character::SetPosition(Vector2D new_position)

@@ -1,7 +1,8 @@
 #include "CharacterLuigi.h"
 
 CharacterLuigi::CharacterLuigi(SDL_Renderer* renderer, std::string imagePath, 
-	Vector2D start_position) : Character(renderer, imagePath, start_position)
+	Vector2D start_position, LevelMap* map) : Character(renderer, imagePath, 
+		start_position, map)
 {
 }
 
@@ -23,7 +24,7 @@ void CharacterLuigi::Update(float deltaTime, SDL_Event e)
 		case SDLK_d:
 			m_moving_right = true;
 			break;
-		case SDLK_SPACE:
+		case SDLK_w:
 			if (m_can_jump)
 			{
 				Jump();
