@@ -5,6 +5,7 @@ Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D sta
 	LevelMap* map)
 {
 	m_collision_radius = 15.0f;
+	m_alive = true;
 	m_current_level_map = map;
 	m_moving_left = false;
 	m_moving_right = false;
@@ -26,6 +27,11 @@ Character::~Character()
 float Character::GetCollisionRadius()
 {
 	return m_collision_radius;
+}
+
+void Character::SetAlive(bool isAlive)
+{
+	m_alive = isAlive;
 }
 
 void Character::Render()

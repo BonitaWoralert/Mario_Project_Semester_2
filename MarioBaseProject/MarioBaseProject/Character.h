@@ -12,6 +12,7 @@ class Character
 {
 protected:
 	float m_collision_radius;
+	bool m_alive;
 
 	SDL_Renderer* m_renderer;
 	Vector2D m_position;
@@ -48,6 +49,8 @@ public:
 	bool IsJumping() { return m_jumping; }
 	void CancelJump() { m_jumping = false; }
 
+	void SetAlive(bool isAlive);
+	bool GetAlive() { return m_alive; }
 private:
 	FACING m_facing_direction;
 	LevelMap* m_current_level_map;
