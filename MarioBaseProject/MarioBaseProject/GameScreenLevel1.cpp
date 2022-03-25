@@ -62,6 +62,9 @@ bool GameScreenLevel1::SetUpLevel()
 	//set up player character
 	SetLevelMap();
 	m_pow_block = new PowBlock(m_renderer, m_level_map);
+	m_screenshake = false;
+	m_background_yPos = 0.0f;
+	
 	mario = new CharacterMario(m_renderer, "Images/Mario.png", Vector2D(64, 330),
 		m_level_map);
 	luigi = new CharacterLuigi(m_renderer, "Images/Luigi.png", Vector2D(90, 330),
@@ -105,4 +108,11 @@ void GameScreenLevel1::UpdatePOWBlock()
 			mario->CancelJump();
 		}
 	}
+}
+
+void GameScreenLevel1::DoScreenShake()
+{
+	m_screenshake = true;
+	m_shake_time = SHAKE_DURATION;
+	m_wobble = 0.0f;
 }
