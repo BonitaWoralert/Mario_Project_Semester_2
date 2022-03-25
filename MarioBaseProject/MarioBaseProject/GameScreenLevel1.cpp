@@ -25,7 +25,7 @@ GameScreenLevel1::~GameScreenLevel1()
 void GameScreenLevel1::Render()
 {
 	//draw the background
-	m_background_texture->Render(Vector2D(), SDL_FLIP_NONE);
+	m_background_texture->Render(Vector2D(0, m_background_yPos), SDL_FLIP_NONE);
 
 	//draw character
 	m_pow_block->Render();
@@ -35,6 +35,22 @@ void GameScreenLevel1::Render()
 
 void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 {
+	//screen shake if required
+	if (m_screenshake)
+	{
+		m_shake_time -= deltaTime;
+		m_wobble++;
+		m_background_yPos = sin(m_wobble);
+		m_background_yPos *= 3.0f;
+
+		//end shake after duration
+		if (m_shake_time <= 0.0f)
+		{
+			m_shake_time = false;
+			m_background_yPos = 0.0f;
+		}
+	}
+
 	//update character
 	mario->Update(deltaTime, e);
 	luigi->Update(deltaTime, e);
@@ -59,12 +75,13 @@ bool GameScreenLevel1::SetUpLevel()
 		return false;
 	}
 
-	//set up player character
+	//set up map
 	SetLevelMap();
+	//set up pow 
 	m_pow_block = new PowBlock(m_renderer, m_level_map);
 	m_screenshake = false;
 	m_background_yPos = 0.0f;
-	
+	//set up characters
 	mario = new CharacterMario(m_renderer, "Images/Mario.png", Vector2D(64, 330),
 		m_level_map);
 	luigi = new CharacterLuigi(m_renderer, "Images/Luigi.png", Vector2D(90, 330),
@@ -98,14 +115,22 @@ void GameScreenLevel1::SetLevelMap()
 
 void GameScreenLevel1::UpdatePOWBlock()
 {
-	if ((Collisions::Instance()->Box(mario->GetCollisionBox(), m_pow_block->GetCollisionBox())) )
+	if (((Collisions::Instance()->Box(mario->GetCollisionBox(), m_pow_block->GetCollisionBox())) || 
+		(Collisions::Instance()->Box(luigi->GetCollisionBox(), m_pow_block->GetCollisionBox()))) 
+		&& m_pow_block != nullptr)
 	{
 		//collided while jumping
 		if (mario->IsJumping())
 		{
-			//DoScreenShake();
+			DoScreenShake();
 			m_pow_block->TakeHit();
-			mario->CancelJump();
+			mario->CancelJump();	
+		}
+		else if (luigi->IsJumping())
+		{
+			DoScreenShake();
+			m_pow_block->TakeHit();
+			luigi->CancelJump();
 		}
 	}
 }
