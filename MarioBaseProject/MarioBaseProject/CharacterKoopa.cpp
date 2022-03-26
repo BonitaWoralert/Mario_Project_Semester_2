@@ -35,6 +35,14 @@ void CharacterKoopa::Jump()
 	}
 }
 
+void CharacterKoopa::Turn()
+{
+	if (m_facing_direction == FACING_RIGHT)
+		m_facing_direction = FACING_LEFT;
+	else
+		m_facing_direction = FACING_RIGHT;
+}
+
 void CharacterKoopa::FlipRightwayUp()
 {
 	if (m_facing_direction == FACING_RIGHT)

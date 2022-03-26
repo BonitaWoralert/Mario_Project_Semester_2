@@ -7,6 +7,7 @@ GameScreenLevel1::GameScreenLevel1(SDL_Renderer* renderer) : GameScreen(renderer
 {
 	m_renderer = renderer;
 	m_level_map = nullptr;
+	m_countdown = 3.0f;
 	SetUpLevel();
 }
 GameScreenLevel1::~GameScreenLevel1()
@@ -124,6 +125,13 @@ void GameScreenLevel1::SetLevelMap()
 
 void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e)
 {
+	m_countdown -= deltaTime;
+	if (m_countdown <= 0)
+	{
+		CreateKoopa(Vector2D(rand() % SCREEN_WIDTH + 1, 32), FACING(rand() & 1), KOOPA_SPEED);
+		m_countdown = 3.0f;
+	}
+
 	if (!m_enemies.empty())
 	{
 		int enemyIndexToDelete = -1;
@@ -134,9 +142,12 @@ void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e)
 			{
 				//is enemy off screen to left/right? 
 				if (m_enemies[i]->GetPosition().x < (float)(-m_enemies[i]->GetCollisionBox().width
-					* 0.5f) || m_enemies[i]->GetPosition().x > SCREEN_WIDTH -
+					* 0.5f) || m_enemies[i]->GetPosition().x >= SCREEN_WIDTH -
 					(float)(m_enemies[i]->GetCollisionBox().width * 0.55f))
-					m_enemies[i]->SetAlive(false);
+				{
+					//m_enemies[i]->Turn();
+					//m_enemies[i]->SetAlive(false);
+				}
 			}
 			//now do update
 

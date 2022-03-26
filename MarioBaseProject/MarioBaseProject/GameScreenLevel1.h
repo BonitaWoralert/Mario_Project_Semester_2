@@ -37,6 +37,7 @@ private:
 	void UpdateEnemies(float deltaTime, SDL_Event e);
 	void CreateKoopa(Vector2D position, FACING direction, float speed);
 	std::vector<CharacterKoopa*> m_enemies;
+	float m_countdown;
 public:
 	GameScreenLevel1(SDL_Renderer* renderer);
 	~GameScreenLevel1();

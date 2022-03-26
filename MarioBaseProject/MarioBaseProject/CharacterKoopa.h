@@ -21,6 +21,7 @@ public:
 	~CharacterKoopa();
 	void TakeDamage();
 	void Jump();
+	void Turn();
 
 	void Update(float deltaTime, SDL_Event e);
 	void Render();
