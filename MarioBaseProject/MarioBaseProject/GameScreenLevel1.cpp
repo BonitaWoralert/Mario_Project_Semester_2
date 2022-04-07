@@ -7,7 +7,7 @@ GameScreenLevel1::GameScreenLevel1(SDL_Renderer* renderer) : GameScreen(renderer
 {
 	m_renderer = renderer;
 	m_level_map = nullptr;
-	m_countdown = 3.0f;
+	m_countdown = 2.0f;
 	SetUpLevel();
 }
 GameScreenLevel1::~GameScreenLevel1()
@@ -91,7 +91,7 @@ bool GameScreenLevel1::SetUpLevel()
 	m_background_yPos = 0.0f;
 	//set up characters
 	CreateKoopa(Vector2D(150, 32), FACING_RIGHT, KOOPA_SPEED);
-	CreateKoopa(Vector2D(325, 32), FACING_RIGHT, KOOPA_SPEED);
+	CreateKoopa(Vector2D(325, 32), FACING_LEFT, KOOPA_SPEED);
 	mario = new CharacterMario(m_renderer, "Images/Mario.png", Vector2D(64, 330),
 		m_level_map);
 	luigi = new CharacterLuigi(m_renderer, "Images/Luigi.png", Vector2D(90, 330),
@@ -129,7 +129,7 @@ void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e)
 	if (m_countdown <= 0)
 	{
 		CreateKoopa(Vector2D(rand() % SCREEN_WIDTH + 1, 32), FACING(rand() & 1), KOOPA_SPEED);
-		m_countdown = 3.0f;
+		m_countdown = 2.0f;
 	}
 
 	if (!m_enemies.empty())
@@ -142,11 +142,11 @@ void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e)
 			{
 				//is enemy off screen to left/right? 
 				if (m_enemies[i]->GetPosition().x < (float)(-m_enemies[i]->GetCollisionBox().width
-					* 0.5f) || m_enemies[i]->GetPosition().x >= SCREEN_WIDTH -
+					* 0.5f) || m_enemies[i]->GetPosition().x > SCREEN_WIDTH -
 					(float)(m_enemies[i]->GetCollisionBox().width * 0.55f))
 				{
 					//m_enemies[i]->Turn();
-					//m_enemies[i]->SetAlive(false);
+					m_enemies[i]->SetAlive(false);
 				}
 			}
 			//now do update
