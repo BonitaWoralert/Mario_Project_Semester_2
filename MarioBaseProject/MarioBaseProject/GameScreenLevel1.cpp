@@ -144,7 +144,7 @@ void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e)
 				if (m_enemies[i]->GetPosition().x < (float)(-m_enemies[i]->GetCollisionBox().width * 0.5f) ||
 					m_enemies[i]->GetPosition().x > SCREEN_WIDTH - (float)(m_enemies[i]->GetCollisionBox().width * 0.5f))
 				{
-					m_enemies[i]->T	urn();
+					m_enemies[i]->Turn();
 					//m_enemies[i]->SetAlive(false);
 				}
 			/*}*/
@@ -190,9 +190,12 @@ void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e)
 
 void GameScreenLevel1::CreateKoopa(Vector2D position, FACING direction, float speed)
 {
-	koopa = new CharacterKoopa(m_renderer, "Images/Koopa.png", position,
-		m_level_map, direction, speed);
-	m_enemies.push_back(koopa);
+	if (m_enemies.size() < 5)
+	{
+		koopa = new CharacterKoopa(m_renderer, "Images/Koopa.png", position,
+			m_level_map, direction, speed);
+		m_enemies.push_back(koopa);
+	}
 }
 
 void GameScreenLevel1::UpdatePOWBlock()
