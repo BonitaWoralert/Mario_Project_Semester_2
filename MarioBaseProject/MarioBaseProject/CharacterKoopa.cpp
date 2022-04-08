@@ -38,9 +38,15 @@ void CharacterKoopa::Jump()
 void CharacterKoopa::Turn()
 {
 	if (m_facing_direction == FACING_RIGHT)
+	{
 		m_facing_direction = FACING_LEFT;
+		m_position.x = SCREEN_WIDTH - (float)(GetCollisionBox().width * 0.5f);
+	}
 	else
+	{
 		m_facing_direction = FACING_RIGHT;
+		m_position.x = (float)(-GetCollisionBox().width * 0.5f);
+	}
 }
 
 void CharacterKoopa::FlipRightwayUp()

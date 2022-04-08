@@ -138,17 +138,16 @@ void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e)
 		for (unsigned int i = 0; i < m_enemies.size(); i++)
 		{
 			//check if enemy is on bottom row
-			if (m_enemies[i]->GetPosition().y > 300.0f)
-			{
+			/*if (m_enemies[i]->GetPosition().y > 300.0f)
+			{*/
 				//is enemy off screen to left/right? 
-				if (m_enemies[i]->GetPosition().x < (float)(-m_enemies[i]->GetCollisionBox().width
-					* 0.5f) || m_enemies[i]->GetPosition().x > SCREEN_WIDTH -
-					(float)(m_enemies[i]->GetCollisionBox().width * 0.55f))
+				if (m_enemies[i]->GetPosition().x < (float)(-m_enemies[i]->GetCollisionBox().width * 0.5f) ||
+					m_enemies[i]->GetPosition().x > SCREEN_WIDTH - (float)(m_enemies[i]->GetCollisionBox().width * 0.5f))
 				{
-					//m_enemies[i]->Turn();
-					m_enemies[i]->SetAlive(false);
+					m_enemies[i]->T	urn();
+					//m_enemies[i]->SetAlive(false);
 				}
-			}
+			/*}*/
 			//now do update
 
 			m_enemies[i]->Update(deltaTime, e);

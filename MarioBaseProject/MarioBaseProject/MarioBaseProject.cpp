@@ -160,15 +160,17 @@ bool Update()
 	case SDL_QUIT:
 		return true;
 		break;
-	}
-
-	switch (e.key.keysym.sym)
-	{
-		//press button to quit
-	case SDLK_RETURN:
-		return true;
+	case SDL_KEYUP:
+		switch (e.key.keysym.sym)
+		{
+			//press button to quit
+		case SDLK_RETURN:
+			return true;
+			break;
+		}
 		break;
 	}
+
 	
 	game_screen_manager->Update((float)(new_time - g_old_time) / 1000.0f, e);
 	g_old_time = new_time;
