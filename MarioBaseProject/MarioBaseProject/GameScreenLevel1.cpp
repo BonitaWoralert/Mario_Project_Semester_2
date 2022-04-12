@@ -92,9 +92,9 @@ bool GameScreenLevel1::SetUpLevel()
 	//set up characters
 	CreateKoopa(Vector2D(150, 32), FACING_RIGHT, KOOPA_SPEED);
 	CreateKoopa(Vector2D(325, 32), FACING_LEFT, KOOPA_SPEED);
-	mario = new CharacterMario(m_renderer, "Images/Mario.png", Vector2D(64, 330),
+	mario = new CharacterMario(m_renderer, "Images/Mario_Sheet.png", Vector2D(64, 330),
 		m_level_map);
-	luigi = new CharacterLuigi(m_renderer, "Images/Luigi.png", Vector2D(90, 330),
+	luigi = new CharacterLuigi(m_renderer, "Images/Luigi_Sheet.png", Vector2D(90, 330),
 		m_level_map);
 }
 

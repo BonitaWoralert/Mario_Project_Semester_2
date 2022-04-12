@@ -18,6 +18,12 @@ Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D sta
 		std::cout << "Character.cpp: Failed to load m_texture";
 	}
 
+	//animation
+	m_single_sprite_w = m_texture->GetWidth() / 3; //3 sprites wide
+	m_single_sprite_h = m_texture->GetHeight() / 4; //4 sprites high
+	xPos = 0; //idle anim
+	yPos = 0;
+
 }
 Character::~Character()
 {
@@ -36,14 +42,21 @@ void Character::SetAlive(bool isAlive)
 
 void Character::Render()
 {
+	SDL_Rect src_rect = { xPos, yPos, m_single_sprite_w, m_single_sprite_h };
+	SDL_Rect dest_rect = {
+		static_cast<int>(m_position.x), static_cast<int>(m_position.y),
+		m_single_sprite_w, m_single_sprite_h };
+
 	if (m_facing_direction == FACING_RIGHT)
 	{
-		m_texture->Render(GetPosition(), SDL_FLIP_NONE);	
+		//m_texture->Render(GetPosition(), SDL_FLIP_NONE);	
+		m_texture->Render(src_rect, dest_rect, SDL_FLIP_NONE);
 		//change to other render func with src and dest rect
 	}
 	if (m_facing_direction == FACING_LEFT)
 	{
-		m_texture->Render(GetPosition(), SDL_FLIP_HORIZONTAL);
+		//m_texture->Render(GetPosition(), SDL_FLIP_HORIZONTAL);
+		m_texture->Render(src_rect, dest_rect, SDL_FLIP_HORIZONTAL);
 	}
 }
 
@@ -74,9 +87,9 @@ void Character::Update(float deltaTime, SDL_Event e)
 	}
 
 	//Collision position variables
-	int centralX_position = (int)(m_position.x + (m_texture->GetWidth() * 0.5)) / 
+	int centralX_position = (int)(m_position.x + (m_single_sprite_w * 0.5)) / 
 		TILE_WIDTH;
-	int foot_position = (int)(m_position.y + m_texture->GetHeight()) / TILE_HEIGHT;
+	int foot_position = (int)(m_position.y + m_single_sprite_h) / TILE_HEIGHT;
 
 	//add gravity
 	if (m_current_level_map->GetTileAt(foot_position, centralX_position) == 0)
