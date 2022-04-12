@@ -1,4 +1,4 @@
-// MarioBaseProject.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// https://gigi.nullneuron.net/gigilabs/animations-with-sprite-sheets-in-sdl2/ 
 //
 
 #include <iostream>

@@ -39,6 +39,7 @@ void Character::Render()
 	if (m_facing_direction == FACING_RIGHT)
 	{
 		m_texture->Render(GetPosition(), SDL_FLIP_NONE);	
+		//change to other render func with src and dest rect
 	}
 	if (m_facing_direction == FACING_LEFT)
 	{
