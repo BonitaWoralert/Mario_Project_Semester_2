@@ -54,6 +54,7 @@ public:
 private:
 	FACING m_facing_direction;
 	LevelMap* m_current_level_map;
+	bool m_spritesheet;
 
 	float m_single_sprite_w, m_single_sprite_h;
 	int xPos, yPos;

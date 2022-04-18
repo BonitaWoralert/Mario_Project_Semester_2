@@ -1,0 +1,91 @@
+﻿'MarioBaseProject.exe' (Win32): Loaded 'C:\Users\Bonita\Documents\GitHub\GEC-Sem-2\MarioBaseProject\Debug\MarioBaseProject.exe'. Symbols loaded.
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ntdll.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\kernel32.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\KernelBase.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\shell32.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcp_win.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ucrtbase.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\user32.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\win32u.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\gdi32.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\gdi32full.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Users\Bonita\Documents\GitHub\GEC-Sem-2\MarioBaseProject\Debug\SDL2.dll'. Module was built without symbols.
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\advapi32.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcrt.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\sechost.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\rpcrt4.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\imm32.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ole32.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\combase.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\oleaut32.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\setupapi.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Users\Bonita\Documents\GitHub\GEC-Sem-2\MarioBaseProject\Debug\SDL2_image.dll'. Module was built without symbols.
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcp140d.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\vcruntime140d.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ucrtbased.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\version.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\winmm.dll'. 
+The thread 0xc87c has exited with code 0 (0x0).
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\SHCore.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\uxtheme.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msctf.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\kernel.appcore.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\bcryptprimitives.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\clbcatq.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\TextInputFramework.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\oleacc.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\CoreMessaging.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\CoreUIComponents.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\WinTypes.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\cryptbase.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\d3d9.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\dwmapi.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\DXCore.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\System32\DriverStore\FileRepository\u0369825.inf_amd64_d21434249e94d178\B369681\aticfx32.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\System32\DriverStore\FileRepository\u0369825.inf_amd64_d21434249e94d178\B369681\atiu9pag.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\System32\DriverStore\FileRepository\u0369825.inf_amd64_d21434249e94d178\B369681\atiumdag.dll'. 
+'MarioBaseProject.exe' (Win32): Unloaded 'C:\Windows\System32\DriverStore\FileRepository\u0369825.inf_amd64_d21434249e94d178\B369681\atiumdag.dll'
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\System32\DriverStore\FileRepository\u0369825.inf_amd64_d21434249e94d178\B369681\atiumdag.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\dbghelp.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\dbgcore.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\System32\DriverStore\FileRepository\u0369825.inf_amd64_d21434249e94d178\B369681\atiumdva.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\powrprof.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\umpdc.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\amdihk32.dll'. Module was built without symbols.
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\shlwapi.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\directxdatabasehelper.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ntmarta.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ResourcePolicyClient.dll'. 
+'MarioBaseProject.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\ResourcePolicyClient.dll'
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ResourcePolicyClient.dll'. 
+'MarioBaseProject.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\ResourcePolicyClient.dll'
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Windows\SysWOW64\windows.storage.dll'. 
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Users\Bonita\Documents\GitHub\GEC-Sem-2\MarioBaseProject\Debug\libpng16-16.dll'. Module was built without symbols.
+'MarioBaseProject.exe' (Win32): Loaded 'C:\Users\Bonita\Documents\GitHub\GEC-Sem-2\MarioBaseProject\Debug\zlib1.dll'. Module was built without symbols.
+The thread 0xa510 has exited with code 0 (0x0).
+The thread 0xe584 has exited with code 0 (0x0).
+The thread 0xe588 has exited with code 0 (0x0).
+The thread 0xe58c has exited with code 0 (0x0).
+The thread 0xc4e8 has exited with code 0 (0x0).
+'MarioBaseProject.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\amdihk32.dll'
+'MarioBaseProject.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\umpdc.dll'
+'MarioBaseProject.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\powrprof.dll'
+'MarioBaseProject.exe' (Win32): Unloaded 'C:\Windows\System32\DriverStore\FileRepository\u0369825.inf_amd64_d21434249e94d178\B369681\atiumdva.dll'
+'MarioBaseProject.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\dbghelp.dll'
+'MarioBaseProject.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\dbgcore.dll'
+'MarioBaseProject.exe' (Win32): Unloaded 'C:\Windows\System32\DriverStore\FileRepository\u0369825.inf_amd64_d21434249e94d178\B369681\atiumdag.dll'
+'MarioBaseProject.exe' (Win32): Unloaded 'C:\Windows\System32\DriverStore\FileRepository\u0369825.inf_amd64_d21434249e94d178\B369681\atiu9pag.dll'
+'MarioBaseProject.exe' (Win32): Unloaded 'C:\Windows\System32\DriverStore\FileRepository\u0369825.inf_amd64_d21434249e94d178\B369681\aticfx32.dll'
+'MarioBaseProject.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\dwmapi.dll'
+'MarioBaseProject.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\ntmarta.dll'
+'MarioBaseProject.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\directxdatabasehelper.dll'
+'MarioBaseProject.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\d3d9.dll'
+'MarioBaseProject.exe' (Win32): Unloaded 'C:\Users\Bonita\Documents\GitHub\GEC-Sem-2\MarioBaseProject\Debug\zlib1.dll'
+'MarioBaseProject.exe' (Win32): Unloaded 'C:\Users\Bonita\Documents\GitHub\GEC-Sem-2\MarioBaseProject\Debug\libpng16-16.dll'
+The thread 0xada8 has exited with code 0 (0x0).
+The thread 0xa758 has exited with code 0 (0x0).
+The thread 0xe590 has exited with code 0 (0x0).
+The thread 0x88bc has exited with code 0 (0x0).
+The thread 0xe5f0 has exited with code 0 (0x0).
+The thread 0xe578 has exited with code 0 (0x0).
+The program '[58520] MarioBaseProject.exe' has exited with code 0 (0x0).

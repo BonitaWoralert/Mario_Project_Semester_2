@@ -113,6 +113,7 @@ void GameScreenLevel1::SetLevelMap()
 										{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
 										{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
 										{ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 } };
+	
 	//clear old maps
 	if (m_level_map != nullptr)
 	{
