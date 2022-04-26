@@ -191,14 +191,13 @@ void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e)
 
 void GameScreenLevel1::CreateKoopa(Vector2D position, FACING direction, float speed)
 {
-	/*
 	if (m_enemies.size() < 5)
 	{
 		koopa = new CharacterKoopa(m_renderer, "Images/Koopa.png", position,
 			m_level_map, direction, speed);
 		m_enemies.push_back(koopa);
 	}
-	*/
+
 }
 
 void GameScreenLevel1::UpdatePOWBlock()
