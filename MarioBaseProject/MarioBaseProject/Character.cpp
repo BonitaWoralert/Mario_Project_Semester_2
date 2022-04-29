@@ -19,8 +19,6 @@ Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D sta
 	}
 
 	//animation
-	m_single_sprite_w = m_texture->GetWidth() / 3; //3 sprites wide
-	m_single_sprite_h = m_texture->GetHeight() / 4; //4 sprites high
 	xPos = 0; //idle anim coords
 	yPos = 0;
 
@@ -113,10 +111,9 @@ void Character::Update(float deltaTime, SDL_Event e)
 
 	//Collision position variables
 	//int centralX_position = (int)(m_position.x + (m_texture->GetWidth() * 0.5)) / 
-	int centralX_position = (int)(m_position.x + (m_single_sprite_w * 0.5)) / 
-		TILE_WIDTH;
-	//int foot_position = (int)(m_position.y + (m_texture->GetHeight())/4) / TILE_HEIGHT;
-	int foot_position = (int)(m_position.y + m_single_sprite_h) / TILE_HEIGHT;
+	int centralX_position = (int)(m_position.x + (m_single_sprite_w * 0.5)) / TILE_WIDTH;
+	//int foot_position = (int)(m_position.y + (m_texture->GetHeight()) / 4) / TILE_HEIGHT;
+	int foot_position = (int)(m_position.y + (m_single_sprite_h)) / TILE_HEIGHT;
 
 	//add gravity
 	if (m_current_level_map->GetTileAt(foot_position, centralX_position) == 0)
@@ -154,14 +151,14 @@ void Character::MoveLeft(float deltaTime)
 
 void Character::AddGravity(float deltaTime)
 {	
-	if (m_position.y + m_texture->GetHeight() <= SCREEN_HEIGHT)
+	if (m_position.y + m_single_sprite_h <= SCREEN_HEIGHT)
 	{
 		m_position.y += GRAVITY_STRENGTH * deltaTime;
 	}
 	else
 	{
 		m_can_jump = true;
-		m_position.y = SCREEN_HEIGHT - m_texture->GetHeight();
+		m_position.y = SCREEN_HEIGHT - m_single_sprite_h;
 	}
 }
 

@@ -11,6 +11,8 @@ class Texture2D;
 class Character
 {
 protected:
+	float m_single_sprite_w, m_single_sprite_h;
+
 	float m_collision_radius;
 	bool m_alive;
 
@@ -44,7 +46,7 @@ public:
 
 	//collisions
 	float GetCollisionRadius();
-	Rect2D GetCollisionBox() { return Rect2D(m_position.x, m_position.y, m_texture->GetWidth() /3, m_texture->GetHeight()/4); }
+	Rect2D GetCollisionBox() { return Rect2D(m_position.x, m_position.y, m_single_sprite_w, m_single_sprite_h); }
 
 	bool IsJumping() { return m_jumping; }
 	void CancelJump() { m_jumping = false; }
@@ -56,7 +58,6 @@ private:
 	LevelMap* m_current_level_map;
 	bool m_spritesheet;
 
-	float m_single_sprite_w, m_single_sprite_h;
 	int xPos, yPos;
 };
 
