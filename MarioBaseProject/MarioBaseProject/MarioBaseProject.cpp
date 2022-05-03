@@ -17,22 +17,29 @@ SDL_Renderer* g_renderer = nullptr;
 //Texture2D* g_texture = nullptr;
 GameScreenManager* game_screen_manager;
 Uint32 g_old_time;
+Mix_Music* g_music = nullptr;
+Mix_Chunk* g_sfx = nullptr;
 
 //Function prototypes
 bool InitSDL();
 void CloseSDL();
 bool Update();
 void Render();
+void LoadMusic(std::string path);
 
 int main(int argc, char* args[])
 {	
 	//Check sdl setup correctly
 	if (InitSDL())
 	{
+		LoadMusic("Audio/Mario.mp3");
+		if (Mix_PlayingMusic() == 0)
+		{
+			Mix_PlayMusic(g_music, -1);
+		}
 		game_screen_manager = new GameScreenManager(g_renderer, SCREEN_LEVEL1);
 		//set time
 		g_old_time = SDL_GetTicks();
-		std::cout << "sdl setup" << std::endl;
 		//flag to see if user wants to quit
 		bool quit = false;
 		
@@ -43,7 +50,6 @@ int main(int argc, char* args[])
 			quit = Update();
 		}
 	}
-	std::cout << "closing..." << std::endl;
 	CloseSDL();
 	
 
@@ -52,6 +58,13 @@ int main(int argc, char* args[])
 
 bool InitSDL()
 {
+	//initialise audio
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+	{
+		std::cout << "Mixer could not init. Error: " << Mix_GetError();
+		return false;
+	}
+
 	//Setup SDL
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
@@ -78,9 +91,6 @@ bool InitSDL()
 		}
 
 		
-		std::cout << "window created" << std::endl;
-		
-		
 		//create renderer
 		g_renderer = SDL_CreateRenderer(g_window, -1, SDL_RENDERER_ACCELERATED);
 
@@ -102,20 +112,7 @@ bool InitSDL()
 
 		}
 
-
-		std::cout << "renderer created" << std::endl;
-
-		//Load background texture
-		//g_texture = new Texture2D(g_renderer);
-
-		std::cout << "texture attempted" << std::endl;
-
-		/*
-		if (!g_texture->LoadFromFile("Images/test.bmp"));
-		{
-			return true;
-		}
-		*/
+		
 	}
 }
 
@@ -129,9 +126,9 @@ void CloseSDL()
 	SDL_DestroyWindow(g_window);
 	g_window = nullptr;
 
-	//release texture
-	//delete g_texture;
-	//g_texture = nullptr;
+	//clear music
+	Mix_FreeMusic(g_music);
+	g_music = nullptr;
 
 	//release renderer
 	SDL_DestroyRenderer(g_renderer);
@@ -189,4 +186,13 @@ void Render()
 
 	//Update the screen
 	SDL_RenderPresent(g_renderer);
+}
+
+void LoadMusic(std::string path)
+{
+	g_music = Mix_LoadMUS(path.c_str());
+	if (g_music == nullptr)
+	{
+		std::cout << "Failed to load music. Error: " << Mix_GetError() << std::endl;
+	}
 }

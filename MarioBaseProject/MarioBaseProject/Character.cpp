@@ -59,9 +59,7 @@ void Character::Render()
 void Character::Update(float deltaTime, SDL_Event e)
 {
 	Uint32 seconds = SDL_GetTicks() /150;
-	//std::cout << seconds << std::endl;
 	int frame = seconds % 3;
-	std::cout << frame << std::endl;
 
 	//idle
 	if (!(m_jumping || m_moving_left || m_moving_right))
