@@ -18,6 +18,10 @@ Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D sta
 		std::cout << "Character.cpp: Failed to load m_texture";
 	}
 
+	//animation
+	xPos = 0; //idle anim coords
+	yPos = 0;
+
 }
 Character::~Character()
 {
@@ -36,21 +40,39 @@ void Character::SetAlive(bool isAlive)
 
 void Character::Render()
 {
+	SDL_Rect src_rect = { xPos, yPos, m_single_sprite_w, m_single_sprite_h };
+	SDL_Rect dest_rect = {
+(int)(m_position.x), (int)(m_position.y),
+			m_single_sprite_w, m_single_sprite_h
+};
+
 	if (m_facing_direction == FACING_RIGHT)
 	{
-		m_texture->Render(GetPosition(), SDL_FLIP_NONE);	
+		m_texture->Render(src_rect, dest_rect, SDL_FLIP_NONE);
 	}
 	if (m_facing_direction == FACING_LEFT)
 	{
-		m_texture->Render(GetPosition(), SDL_FLIP_HORIZONTAL);
+		m_texture->Render(src_rect, dest_rect, SDL_FLIP_HORIZONTAL);
 	}
 }
 
 void Character::Update(float deltaTime, SDL_Event e)
 {
+	Uint32 seconds = SDL_GetTicks() /150;
+	int frame = seconds % 3;
+
+	//idle
+	if (!(m_jumping || m_moving_left || m_moving_right))
+	{
+		xPos = 0;
+		yPos = 0;
+	}
+
 	//jumping
 	if (m_jumping)
 	{
+		//change anim
+		yPos = 42;
 		//adjust position
 		m_position.y -= m_jump_force * deltaTime;
 		//reduce jump force
@@ -58,6 +80,7 @@ void Character::Update(float deltaTime, SDL_Event e)
 		//is jump force 0?
 		if (m_jump_force <= 0.0f)
 		{
+			yPos = 0;
 			m_jumping = false;
 		}
 	}
@@ -65,17 +88,30 @@ void Character::Update(float deltaTime, SDL_Event e)
 	//moving left/right
 	if (m_moving_left)
 	{
+		xPos = 0;
 		MoveLeft(deltaTime);
+		if (!m_jumping)
+		{
+			yPos = 126;
+			xPos = m_single_sprite_w * frame;
+		}
 	}
 	else if (m_moving_right)
 	{
+		xPos = 0;
 		MoveRight(deltaTime);
+		if (!m_jumping)
+		{
+			yPos = 126;
+			xPos = m_single_sprite_w * frame;
+		}
 	}
 
 	//Collision position variables
-	int centralX_position = (int)(m_position.x + (m_texture->GetWidth() * 0.5)) / 
-		TILE_WIDTH;
-	int foot_position = (int)(m_position.y + m_texture->GetHeight()) / TILE_HEIGHT;
+	//int centralX_position = (int)(m_position.x + (m_texture->GetWidth() * 0.5)) / 
+	int centralX_position = (int)(m_position.x + (m_single_sprite_w * 0.5)) / TILE_WIDTH;
+	//int foot_position = (int)(m_position.y + (m_texture->GetHeight()) / 4) / TILE_HEIGHT;
+	int foot_position = (int)(m_position.y + (m_single_sprite_h)) / TILE_HEIGHT;
 
 	//add gravity
 	if (m_current_level_map->GetTileAt(foot_position, centralX_position) == 0)
@@ -113,14 +149,14 @@ void Character::MoveLeft(float deltaTime)
 
 void Character::AddGravity(float deltaTime)
 {	
-	if (m_position.y + m_texture->GetHeight() <= SCREEN_HEIGHT)
+	if (m_position.y + m_single_sprite_h <= SCREEN_HEIGHT)
 	{
 		m_position.y += GRAVITY_STRENGTH * deltaTime;
 	}
 	else
 	{
 		m_can_jump = true;
-		m_position.y = SCREEN_HEIGHT - m_texture->GetHeight();
+		m_position.y = SCREEN_HEIGHT - m_single_sprite_h;
 	}
 }
 

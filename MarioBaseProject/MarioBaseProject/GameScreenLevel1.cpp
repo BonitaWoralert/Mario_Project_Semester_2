@@ -92,9 +92,9 @@ bool GameScreenLevel1::SetUpLevel()
 	//set up characters
 	CreateKoopa(Vector2D(150, 32), FACING_RIGHT, KOOPA_SPEED);
 	CreateKoopa(Vector2D(325, 32), FACING_LEFT, KOOPA_SPEED);
-	mario = new CharacterMario(m_renderer, "Images/Mario.png", Vector2D(64, 330),
+	mario = new CharacterMario(m_renderer, "Images/Mario_Sheet.png", Vector2D(64, 330),
 		m_level_map);
-	luigi = new CharacterLuigi(m_renderer, "Images/Luigi.png", Vector2D(90, 330),
+	luigi = new CharacterLuigi(m_renderer, "Images/Luigi_Sheet.png", Vector2D(90, 330),
 		m_level_map);
 }
 
@@ -113,6 +113,7 @@ void GameScreenLevel1::SetLevelMap()
 										{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
 										{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
 										{ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 } };
+	
 	//clear old maps
 	if (m_level_map != nullptr)
 	{
@@ -196,6 +197,7 @@ void GameScreenLevel1::CreateKoopa(Vector2D position, FACING direction, float sp
 			m_level_map, direction, speed);
 		m_enemies.push_back(koopa);
 	}
+
 }
 
 void GameScreenLevel1::UpdatePOWBlock()

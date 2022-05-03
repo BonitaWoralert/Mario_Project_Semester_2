@@ -62,8 +62,6 @@ void CharacterKoopa::FlipRightwayUp()
 
 void CharacterKoopa::Update(float deltaTime, SDL_Event e)
 {
-	//use code within base class
-	Character::Update(deltaTime, e);
 
 	if (!m_injured)
 	{
@@ -91,6 +89,9 @@ void CharacterKoopa::Update(float deltaTime, SDL_Event e)
 		if (m_injured_time <= 0.0)
 			FlipRightwayUp();
 	}
+
+	//use code within base class
+	Character::Update(deltaTime, e);
 }
 
 void CharacterKoopa::Render()

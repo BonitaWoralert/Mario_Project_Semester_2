@@ -3,10 +3,6 @@
 class CharacterKoopa : public Character
 {
 private:
-	//for sprite sheet
-	float m_single_sprite_w;
-	float m_single_sprite_h;
-
 	//koopa variables
 	FACING m_facing_direction;
 	float m_movement_speed;
