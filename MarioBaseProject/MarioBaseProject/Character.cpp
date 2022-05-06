@@ -72,7 +72,7 @@ void Character::Update(float deltaTime, SDL_Event e)
 	if (m_jumping)
 	{
 		//change anim
-		yPos = 42;
+		yPos = m_single_sprite_h;
 		//adjust position
 		m_position.y -= m_jump_force * deltaTime;
 		//reduce jump force
@@ -80,7 +80,7 @@ void Character::Update(float deltaTime, SDL_Event e)
 		//is jump force 0?
 		if (m_jump_force <= 0.0f)
 		{
-			yPos = 0;
+			yPos = 0; //back to idle
 			m_jumping = false;
 		}
 	}
@@ -88,22 +88,22 @@ void Character::Update(float deltaTime, SDL_Event e)
 	//moving left/right
 	if (m_moving_left)
 	{
-		xPos = 0;
+		xPos = 0; //prevent jump and walk from attempting to play at same time - makes character disappear
 		MoveLeft(deltaTime);
 		if (!m_jumping)
 		{
-			yPos = 126;
-			xPos = m_single_sprite_w * frame;
+			yPos = m_single_sprite_h*3; //go to bottom row of sprite sheet where the walk animations are
+			xPos = m_single_sprite_w * frame; // co ords are based on frame 
 		}
 	}
 	else if (m_moving_right)
 	{
 		xPos = 0;
 		MoveRight(deltaTime);
-		if (!m_jumping)
+		if (!m_jumping) //prevent jump and walk from attempting to play at same time - makes character disappear
 		{
-			yPos = 126;
-			xPos = m_single_sprite_w * frame;
+			yPos = m_single_sprite_h*3; //go to bottom row of sprite sheet where the walk animations are
+			xPos = m_single_sprite_w * frame; //co ords are based on frame
 		}
 	}
 
