@@ -204,8 +204,8 @@ void GameScreenLevel1::UpdatePOWBlock()
 {
 	if (((Collisions::Instance()->Box(mario->GetCollisionBox(), m_pow_block->GetCollisionBox())) || 
 		(Collisions::Instance()->Box(luigi->GetCollisionBox(), m_pow_block->GetCollisionBox()))) 
-		&& m_pow_block != nullptr)
-	{
+		&& m_pow_block->IsAvailable())
+	{	
 		//collided while jumping
 		if (mario->IsJumping())
 		{

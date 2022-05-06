@@ -26,23 +26,19 @@ bool Texture2D::LoadFromFile(std::string path)
 	{
 		//Colour key the image to be transparent
 		SDL_SetColorKey(p_surface, SDL_TRUE, SDL_MapRGB(p_surface->format, 0, 0xFF, 0xFF));
-		std::cout << "texture2d.cpp::colour key set" << std::endl;
 
 		//create texture from pixels on surface
 		m_texture = SDL_CreateTextureFromSurface(m_renderer, p_surface);
-		std::cout << "texture2d.cpp::attempted texture creation" << std::endl;
 		if (m_texture == nullptr)
 		{
 			std::cout << "Unable to create texture from surface. Error: " << SDL_GetError();
 		}
 		else
 		{
-			std::cout << "texture2d.cpp::setting height and width" << std::endl;
 			m_width = p_surface->w;
 			m_height = p_surface->h;
 		}
 		//remove loaded surface now that we have a texture
-		std::cout << "texture2d.cpp::removing loaded surface" << std::endl;
 		SDL_FreeSurface(p_surface);
 
 	}

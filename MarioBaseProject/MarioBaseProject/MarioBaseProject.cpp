@@ -161,7 +161,7 @@ bool Update()
 		switch (e.key.keysym.sym)
 		{
 			//press button to quit
-		case SDLK_RETURN:
+		case SDLK_ESCAPE:
 			return true;
 			break;
 		}

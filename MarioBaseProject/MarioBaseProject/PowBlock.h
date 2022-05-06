@@ -11,7 +11,7 @@ public:
 	void TakeHit();
 
 	//inline func
-	Rect2D GetCollisionBox() { return Rect2D(m_position.x, m_position.y, m_texture->GetWidth(), m_texture->GetHeight()); }
+	Rect2D GetCollisionBox() { return Rect2D(m_position.x, m_position.y, m_single_sprite_w, m_single_sprite_h); }
 	bool IsAvailable() { return m_num_hits_left > 0; }
 private:
 	SDL_Renderer* m_renderer;
