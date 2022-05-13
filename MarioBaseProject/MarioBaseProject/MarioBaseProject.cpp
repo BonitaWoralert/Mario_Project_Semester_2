@@ -74,7 +74,7 @@ bool InitSDL()
 	else
 	{
 		//setup passed so create window
-		g_window = SDL_CreateWindow("Click the X or press Enter to quit!",
+		g_window = SDL_CreateWindow("Mario Bros",
 			SDL_WINDOWPOS_UNDEFINED,
 			SDL_WINDOWPOS_UNDEFINED,
 			SCREEN_WIDTH,
